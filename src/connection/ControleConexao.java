@@ -73,7 +73,7 @@ public class ControleConexao {
 	}
 
 	//adicionar tarefa
-	/* public static void adicionarTarefa(String nome, String descricao, Enum status, int id_usuario) throws SQLException, IOException {
+	/* public static void adicionarTarefa(String nome, String descricao, StatusTarefa status, int id_usuario) throws SQLException, IOException {
 		String sql = """
 				INSERT INTO tarefas (nome, descricao, status, usuario_id) VALUES
 				('Finalizar relatório', 'Escrever e revisar relatório anual', 'pendente', 1);
