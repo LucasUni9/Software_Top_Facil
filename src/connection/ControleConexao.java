@@ -61,23 +61,22 @@ public class ControleConexao {
 	}
 
 	//adicionar usuario
-	/*public static void criarBanco() throws SQLException, IOException {
-		String sql = """
-				CREATE DATABASE IF NOT EXISTS topFacil
-				""";
+	public static void adicionarUsuario(String nome, String email, String senha) throws SQLException, IOException {
+		String sql = "INSERT INTO usuarios (nome, email, senha) VALUES('" + nome + "', '"+  email + "', '" + senha +"')";
 
 		Connection conexao = Conexao.conectarBanco();
 		Statement stmt = conexao.createStatement();
 		stmt.execute(sql);
-		System.out.println("Banco de dados criado com sucesso!");
+		System.out.println("Usuario adicionado com sucesso!");
 		
 		conexao.close();
-	}*/
+	}
 
 	//adicionar tarefa
-	/* public static void criarBanco() throws SQLException, IOException {
+	/* public static void adicionarTarefa(String nome, String descricao, Enum status, int id_usuario) throws SQLException, IOException {
 		String sql = """
-				CREATE DATABASE IF NOT EXISTS topFacil
+				INSERT INTO tarefas (nome, descricao, status, usuario_id) VALUES
+				('Finalizar relatório', 'Escrever e revisar relatório anual', 'pendente', 1);
 				""";
 
 		Connection conexao = Conexao.conectarBanco();
