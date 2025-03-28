@@ -34,5 +34,7 @@ public class ControleTarefa {
 		tarefas.get(alteracao - 1).setDescricao(descricao);
 	}
 
-//Funca escolher status da tarefa
+//Funca escolher status da tarefa PENDENTE,EXECUTANDO,CONCLUIDA
+	public enum escolherStatusTarefa(String status) {
+		switch(status) 
 }
