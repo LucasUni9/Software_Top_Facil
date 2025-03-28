@@ -35,7 +35,7 @@ public class ControleTarefa {
 	}
 
 //Funca escolher status da tarefa PENDENTE,EXECUTANDO,CONCLUIDA
-	public enum escolherStatusTarefa(String status) {
+	public StatusTarefa escolherStatusTarefa(String status) {
 		switch(status) {
 			case pendente :
 				return StatusTarefa.PENDENTE;
