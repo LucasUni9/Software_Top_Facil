@@ -38,8 +38,11 @@ public class Programa {
 					String nome = entrada.nextLine();
 					System.out.print("Descrição da tarefa: ");
 					String descricao = entrada.nextLine();
+					System.out.println("Status da tarefa: pendente, executando ou conluida?")
+					String status = entrada.nextLine();
+					StatusTarefa statusDaTarefa = controleTarefa.adicionarStatusTarefa(status)
 					
-					controleTarefa.adicionarTarefa(nome, descricao, StatusTarefa.PENDENTE);
+					controleTarefa.adicionarTarefa(nome, descricao, statusDaTarefa);
 					break;
 					
 				case 2:
