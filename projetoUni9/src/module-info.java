@@ -4,6 +4,7 @@ module projetoUni9 {
 	requires javafx.base;
 	requires javafx.controls;
 	requires javafx.graphics;
+	requires javafx.fxml;
 	
 	opens view;
 }

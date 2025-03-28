@@ -2,23 +2,23 @@ package model;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 import connection.Conexao;
+import connection.ControleConexao;
 import javafx.application.Application;
-import view.TelaPrincipal;
+import view.ControleTelaLogin;
 
 public class Programa {
 	
 	public static void main(String[] args) throws SQLException, IOException {
 		
-		Scanner entrada = new Scanner(System.in);
-		String continuar = "s";
-		ControleTarefa controleTarefa = new ControleTarefa();
+	//	Scanner entrada = new Scanner(System.in);
+	//	String continuar = "s";
+	//	ControleTarefa controleTarefa = new ControleTarefa();
 		Conexao.conectarBanco();
-		Application.launch(TelaPrincipal.class, args);
-		
-		while(continuar.equalsIgnoreCase("s")) { 
+		Application.launch(ControleTelaLogin.class, args);
+		ControleConexao.criarBanco();
+	/*	while(continuar.equalsIgnoreCase("s")) { 
 			
 			System.out.println("Oque deseja fazer: \n1-Adicionar Tarefa, 2-Consultar Tarefas, 3-Alterar Tarefa, 4-Remover Tarefa? ");
 			int decisao = entrada.nextInt();
@@ -61,9 +61,9 @@ public class Programa {
 			System.out.print("Quer continuar? ");
 			continuar = entrada.next();
 			
-		}		
+		}		*/
 		
-		entrada.close();
+	//	entrada.close();
 	}
 
 }

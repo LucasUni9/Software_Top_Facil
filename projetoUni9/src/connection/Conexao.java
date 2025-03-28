@@ -8,6 +8,8 @@ import java.util.Properties;
 
 public class Conexao {
 		
+	
+	
 	public static Connection conectarBanco() throws SQLException, IOException {
 		Properties prop = getProperties();
 		final String url = prop.getProperty("urlBanco");
@@ -24,4 +26,5 @@ public class Conexao {
 		prop.load(Conexao.class.getResourceAsStream(caminho));
 		return prop;
 	}
+	
 }
