@@ -12,13 +12,21 @@ public class Programa {
 	
 	public static void main(String[] args) throws SQLException, IOException {
 		
-	//	Scanner entrada = new Scanner(System.in);
-	//	String continuar = "s";
-	//	ControleTarefa controleTarefa = new ControleTarefa();
+		Scanner entrada = new Scanner(System.in);
+		String continuar = "s";
+		ControleTarefa controleTarefa = new ControleTarefa();
 		Conexao.conectarBanco();
-		Application.launch(ControleTelaLogin.class, args);
+	//	Application.launch(ControleTelaLogin.class, args);
 		ControleConexao.criarBanco();
-	/*	while(continuar.equalsIgnoreCase("s")) { 
+
+		System.out.println("Login do usuario \nNome: ");
+		String nomeUsuario = entrada.nextLine();
+		System.out.println("Email: ");
+		String email = entrada.nextLine();
+		System.out.println("Senha: ");
+		String senha = entrada.nextLine();
+		
+		while(continuar.equalsIgnoreCase("s")) { 
 			
 			System.out.println("Oque deseja fazer: \n1-Adicionar Tarefa, 2-Consultar Tarefas, 3-Alterar Tarefa, 4-Remover Tarefa? ");
 			int decisao = entrada.nextInt();
@@ -28,7 +36,7 @@ public class Programa {
 					System.out.print("Nome da tarefa: ");
 					entrada.nextLine();
 					String nome = entrada.nextLine();
-					System.out.print("Descrição da tarefa: ");
+					System.out.print("DescriÃ§Ã£o da tarefa: ");
 					String descricao = entrada.nextLine();
 					
 					controleTarefa.adicionarTarefa(nome, descricao, StatusTarefa.PENDENTE);
@@ -45,7 +53,7 @@ public class Programa {
 					System.out.print("Nome novo da tarefa: ");
 					entrada.nextLine();
 					String nomeNovo = entrada.nextLine();
-					System.out.print("Descrição nova da tarefa: ");
+					System.out.print("DescriÃ§Ã£o nova da tarefa: ");
 					String descricaoNova = entrada.nextLine();
 					
 					controleTarefa.alterarTarefa(alteracao, nomeNovo, descricaoNova);
@@ -61,7 +69,7 @@ public class Programa {
 			System.out.print("Quer continuar? ");
 			continuar = entrada.next();
 			
-		}		*/
+		}		
 		
 	//	entrada.close();
 	}
