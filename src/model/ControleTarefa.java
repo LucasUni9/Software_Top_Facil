@@ -33,4 +33,6 @@ public class ControleTarefa {
 		tarefas.get(alteracao - 1).setNome(nome);
 		tarefas.get(alteracao - 1).setDescricao(descricao);
 	}
+
+//Funca escolher status da tarefa
 }
