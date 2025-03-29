@@ -52,6 +52,8 @@ public class ControleConexao {
 				id INT AUTO_INCREMENT PRIMARY KEY,
 				nome VARCHAR(100) NOT NULL,
 				descricao TEXT,
+				status ENUM('pendente', 'em andamento', 'concluída') DEFAULT 
+				'pendente',
 				usuario_id INT,
 				FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 				);
@@ -89,7 +91,7 @@ public class ControleConexao {
 	//adicionar tarefa
 	 public static void adicionarTarefa(String nome, String descricao) throws SQLException, IOException {
 		String selecionarDatabase = "USE topfacil";
-		 String sql = "INSERT INTO tarefas (nome, descricao) VALUES (?,?)";
+		 String sql = "INSERT INTO tarefas (nome, descricao, status, usuario_id) VALUES (?,?,?,?)";
 
 		Connection conexao = Conexao.conectarBanco();
 	    PreparedStatement pstmt = conexao.prepareStatement(sql);
@@ -114,7 +116,7 @@ public class ControleConexao {
 	    pstmt.setString(3, usuario.senha);
 
 	    ResultSet rs = pstmt.executeQuery();
-	    usuario.id = rs.getInt("id"); // Retorna o ID do usu�rio encontrado
+	    usuario.id = rs.getInt("id"); // Retorna o ID do usuário encontrado
 	    conexao.close();
 	}
 }
