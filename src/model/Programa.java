@@ -2,11 +2,10 @@ package model;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 import connection.Conexao;
 import connection.ControleConexao;
-import javafx.application.Application;
-import view.ControleTelaLogin;
 
 public class Programa {
 	
@@ -18,17 +17,21 @@ public class Programa {
 		Conexao.conectarBanco();
 	//	Application.launch(ControleTelaLogin.class, args);
 		ControleConexao.criarBanco();
+		ControleConexao.criarTabelaUsuario();
+		ControleConexao.criarTabelaTarefa();
 
-		System.out.println("Login do usuario \nNome: ");
+		System.out.print("Login do usuario \nNome: ");
 		String nomeUsuario = entrada.nextLine();
-		System.out.println("Email: ");
+		System.out.print("Email: ");
 		String email = entrada.nextLine();
-		System.out.println("Senha: ");
+		System.out.print("Senha: ");
 		String senha = entrada.nextLine();
+		
+		Usuario usuario = new Usuario(nomeUsuario, email, senha);
 		
 		while(continuar.equalsIgnoreCase("s")) { 
 			
-			System.out.println("Oque deseja fazer: \n1-Adicionar Tarefa, 2-Consultar Tarefas, 3-Alterar Tarefa, 4-Remover Tarefa? ");
+			System.out.println("Oque deseja fazer: \n1-Adicionar Tarefa, 2-Consultar Tarefas, 3-Alterar Tarefa, 4-Remover Tarefa?");
 			int decisao = entrada.nextInt();
 			
 			switch(decisao) {
@@ -36,13 +39,14 @@ public class Programa {
 					System.out.print("Nome da tarefa: ");
 					entrada.nextLine();
 					String nome = entrada.nextLine();
-					System.out.print("DescriÃ§Ã£o da tarefa: ");
+					System.out.print("Descrição da tarefa: ");
 					String descricao = entrada.nextLine();
-					System.out.println("Status da tarefa: pendente, executando ou conluida?")
+					System.out.println("Status da tarefa: pendente, executando ou conluida?");
 					String status = entrada.nextLine();
-					StatusTarefa statusDaTarefa = controleTarefa.escolherStatusTarefa(status)
+					StatusTarefa statusDaTarefa = controleTarefa.escolherStatusTarefa(status);
 					
 					controleTarefa.adicionarTarefa(nome, descricao, statusDaTarefa);
+					ControleConexao.adicionarTarefa(nome,descricao);
 					break;
 					
 				case 2:
@@ -67,14 +71,15 @@ public class Programa {
 					int posicao = entrada.nextInt();
 					controleTarefa.removerTarefa(posicao);
 					break;
-			}
+				}
+
 			
 			System.out.print("Quer continuar? ");
 			continuar = entrada.next();
 			
 		}		
 		
-	//	entrada.close();
+		entrada.close();
 	}
 
 }

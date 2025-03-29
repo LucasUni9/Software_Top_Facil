@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class Conexao {
-		
-	
 	
 	public static Connection conectarBanco() throws SQLException, IOException {
 		Properties prop = getProperties();
@@ -16,7 +14,7 @@ public class Conexao {
 		final String usuario = prop.getProperty("usuarioBanco");
 		final String senha = prop.getProperty("senhaBanco");
 		
-		System.out.println("Conexão feita com sucesso!");
+		//System.out.println("Conexão feita com sucesso!");
 		return DriverManager.getConnection(url, usuario, senha);
 	}
 	
