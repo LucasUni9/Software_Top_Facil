@@ -33,4 +33,19 @@ public class ControleTarefa {
 		tarefas.get(alteracao - 1).setNome(nome);
 		tarefas.get(alteracao - 1).setDescricao(descricao);
 	}
+
+//Funca escolher status da tarefa PENDENTE,EXECUTANDO,CONCLUIDA
+	public StatusTarefa escolherStatusTarefa(String status) {
+		switch(status) {
+			case pendente :
+				return StatusTarefa.PENDENTE;
+				break;
+			case executando :
+				return StatusTarefa.EXECUTANDO;
+				break;
+			case concluida :
+				return StatusTarefa.CONCLUIDA
+				break;
+		}
+	}
 }
