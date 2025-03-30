@@ -48,6 +48,6 @@ public class Usuario {
 	}
 	
 	public void consultarUsuario() {
-		System.out.println("Nome: " + nome + " | Email: " + email + " | Senha: " + senha);
+		System.out.println("Nome: " + nome + " | Email: " + email + " | Senha: " + senha + "| ID: " + id);
 	}
 }

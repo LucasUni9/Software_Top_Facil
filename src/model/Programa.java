@@ -28,6 +28,9 @@ public class Programa {
 		String senha = entrada.nextLine();
 		
 		Usuario usuario = new Usuario(nomeUsuario, email, senha);
+		ControleConexao.adicionarUsuario(usuario);
+		ControleConexao.pegarIdUsuario(usuario);
+		usuario.consultarUsuario();
 		
 		while(continuar.equalsIgnoreCase("s")) { 
 			
@@ -41,12 +44,12 @@ public class Programa {
 					String nome = entrada.nextLine();
 					System.out.print("Descrição da tarefa: ");
 					String descricao = entrada.nextLine();
-					System.out.println("Status da tarefa: pendente, executando ou conluida?");
+					System.out.println("Status da tarefa: pendente, em andamento ou conluida?");
 					String status = entrada.nextLine();
 					StatusTarefa statusDaTarefa = controleTarefa.escolherStatusTarefa(status);
 					
 					controleTarefa.adicionarTarefa(nome, descricao, statusDaTarefa);
-					ControleConexao.adicionarTarefa(nome,descricao);
+					ControleConexao.adicionarTarefa(nome,descricao, status, usuario.id);
 					break;
 					
 				case 2:
