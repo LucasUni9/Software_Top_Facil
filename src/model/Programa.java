@@ -32,6 +32,7 @@ public class Programa {
 		ControleConexao.pegarIdUsuario(usuario);
 		usuario.consultarUsuario();
 		
+
 		while(continuar.equalsIgnoreCase("s")) { 
 			
 			System.out.println("Oque deseja fazer: \n1-Adicionar Tarefa, 2-Consultar Tarefas, 3-Alterar Tarefa, 4-Remover Tarefa?");
@@ -42,7 +43,7 @@ public class Programa {
 					System.out.print("Nome da tarefa: ");
 					entrada.nextLine();
 					String nome = entrada.nextLine();
-					System.out.print("Descri��o da tarefa: ");
+					System.out.print("Descrição da tarefa: ");
 					String descricao = entrada.nextLine();
 					System.out.println("Status da tarefa: pendente, em andamento ou conluida?");
 					String status = entrada.nextLine();
@@ -55,6 +56,10 @@ public class Programa {
 				case 2:
 					System.out.println("Consultar Tarefas");
 					controleTarefa.listarTarefas();
+					// Agora você pode manipular as tarefas na sua aplicação
+					for (TarefasBanco tarefa : tarefasDoUsuario) {
+			    System.out.println("Título: " + tarefa.getTitulo());
+					}
 					break;
 					
 				case 3:
@@ -63,7 +68,7 @@ public class Programa {
 					System.out.print("Nome novo da tarefa: ");
 					entrada.nextLine();
 					String nomeNovo = entrada.nextLine();
-					System.out.print("Descrição nova da tarefa: ");
+					System.out.print("DescriÃ§Ã£o nova da tarefa: ");
 					String descricaoNova = entrada.nextLine();
 					
 					controleTarefa.alterarTarefa(alteracao, nomeNovo, descricaoNova);
