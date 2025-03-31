@@ -31,7 +31,8 @@ public class Programa {
 		ControleConexao.adicionarUsuario(usuario);
 		ControleConexao.pegarIdUsuario(usuario);
 		usuario.consultarUsuario();
-		
+		TarefaDAO tarefaDAO = new TarefaDAO(conexao);
+		List<TarefasBanco> tarefasDoUsuario = tarefaDAO.buscarTarefasPorUsuario(usuarioId);
 
 		while(continuar.equalsIgnoreCase("s")) { 
 			
