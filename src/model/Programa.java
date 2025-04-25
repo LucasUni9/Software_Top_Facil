@@ -1,11 +1,18 @@
 package model;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
+import connection.AuthDAO;
 import connection.Conexao;
 import connection.ControleConexao;
+import connection.TarefaDAO;
+import connection.TarefasBanco;
+import javafx.application.Application;
+import view.ControleCena;
 
 public class Programa {
 	
@@ -14,8 +21,8 @@ public class Programa {
 		Scanner entrada = new Scanner(System.in);
 		String continuar = "s";
 		ControleTarefa controleTarefa = new ControleTarefa();
-		Conexao.conectarBanco();
-	//	Application.launch(ControleTelaLogin.class, args);
+		Connection conexao = Conexao.conectarBanco();
+		Application.launch(ControleCena.class, args);
 		ControleConexao.criarBanco();
 		ControleConexao.criarTabelaUsuario();
 		ControleConexao.criarTabelaTarefa();
@@ -28,11 +35,15 @@ public class Programa {
 		String senha = entrada.nextLine();
 		
 		Usuario usuario = new Usuario(nomeUsuario, email, senha);
+        if (AuthDAO.login(email,senha)) {
+            System.out.println("Login bem-sucedido!");
+        } else {
+            System.out.println("Email ou senha incorretos.");
+        }
 		ControleConexao.adicionarUsuario(usuario);
 		ControleConexao.pegarIdUsuario(usuario);
 		usuario.consultarUsuario();
 		TarefaDAO tarefaDAO = new TarefaDAO(conexao);
-		List<TarefasBanco> tarefasDoUsuario = tarefaDAO.buscarTarefasPorUsuario(usuarioId);
 
 		while(continuar.equalsIgnoreCase("s")) { 
 			
@@ -44,22 +55,23 @@ public class Programa {
 					System.out.print("Nome da tarefa: ");
 					entrada.nextLine();
 					String nome = entrada.nextLine();
-					System.out.print("DescriÃ§Ã£o da tarefa: ");
+					System.out.print("Descrição da tarefa: ");
 					String descricao = entrada.nextLine();
 					System.out.println("Status da tarefa: pendente, em andamento ou conluida?");
 					String status = entrada.nextLine();
-					StatusTarefa statusDaTarefa = controleTarefa.escolherStatusTarefa(status);
+	//				StatusTarefa statusDaTarefa = controleTarefa.escolherStatusTarefa(status);
 					
-					controleTarefa.adicionarTarefa(nome, descricao, statusDaTarefa);
+	//				controleTarefa.adicionarTarefa(nome, descricao, statusDaTarefa);
 					ControleConexao.adicionarTarefa(nome,descricao, status, usuario.id);
 					break;
 					
 				case 2:
 					System.out.println("Consultar Tarefas");
-					controleTarefa.listarTarefas();
-					// Agora vocÃª pode manipular as tarefas na sua aplicaÃ§Ã£o
+		//			controleTarefa.listarTarefas();
+					// Agora você pode manipular as tarefas na sua aplicação
+					List<TarefasBanco> tarefasDoUsuario = tarefaDAO.buscarTarefasPorUsuario(usuario.id);
 					for (TarefasBanco tarefa : tarefasDoUsuario) {
-			    System.out.println("TÃ­tulo: " + tarefa.getTitulo());
+						System.out.println("Tarefas: " + tarefa.getTitulo() + "| Descrição: " + tarefa.getDescricao());
 					}
 					break;
 					
@@ -69,7 +81,7 @@ public class Programa {
 					System.out.print("Nome novo da tarefa: ");
 					entrada.nextLine();
 					String nomeNovo = entrada.nextLine();
-					System.out.print("DescriÃƒÂ§ÃƒÂ£o nova da tarefa: ");
+					System.out.print("Descrição nova da tarefa: ");
 					String descricaoNova = entrada.nextLine();
 					
 					controleTarefa.alterarTarefa(alteracao, nomeNovo, descricaoNova);

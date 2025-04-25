@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           style="-fx-background-color: linear-gradient(to bottom right, #0A145E, #071047);">
+    <VBox alignment="CENTER">
+        <GridPane style="-fx-background-color: #050B2D; -fx-background-radius: 10; -fx-padding: 30;"
+                  hgap="10" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" />
+            </columnConstraints>
+
+            <!-- Label Email -->
+            <Label text="Email" style="-fx-text-fill: white;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+
+            <!-- Campo Email -->
+            <TextField promptText="Email" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                       style="-fx-background-radius: 6; -fx-padding: 8;" />
+
+            <!-- Label Senha -->
+            <Label text="Senha" style="-fx-text-fill: white;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+
+            <!-- Campo Senha -->
+            <PasswordField promptText="Senha" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                           style="-fx-background-radius: 6; -fx-padding: 8;" />
+
+            <!-- Botões -->
+            <HBox spacing="20" alignment="CENTER" GridPane.rowIndex="4" GridPane.columnIndex="0">
+                <Button text="Cadastre-se"
+                        style="-fx-background-color: #F1EAFE; -fx-text-fill: #7B5CA0; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 8 20;" />
+                <Button text="Login"
+                        style="-fx-background-color: #F1EAFE; -fx-text-fill: #7B5CA0; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 8 20;" />
+            </HBox>
+        </GridPane>
+    </VBox>
+</StackPane>

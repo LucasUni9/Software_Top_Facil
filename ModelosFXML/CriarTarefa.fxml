@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="687.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="454.0" prefWidth="687.0">
+      <AnchorPane prefHeight="449.0" prefWidth="519.0">
          <children>
             <TextField layoutX="27.0" layoutY="97.0" prefHeight="36.0" prefWidth="510.0" />
             <Label layoutX="27.0" layoutY="133.0" prefHeight="49.0" prefWidth="251.0" text="Descrição da tarefa">
@@ -21,14 +20,14 @@
                </font>
             </Label>
             <TextArea layoutX="27.0" layoutY="182.0" prefHeight="127.0" prefWidth="510.0" />
-            <Button layoutX="541.0" layoutY="400.0" mnemonicParsing="false" text="Cancelar" />
-            <Button layoutX="613.0" layoutY="400.0" mnemonicParsing="false" text="Criar" />
+            <Button layoutX="406.0" layoutY="400.0" mnemonicParsing="false" text="Cancelar" />
+            <Button layoutX="489.0" layoutY="400.0" mnemonicParsing="false" text="Salvar" />
             <Label layoutX="27.0" layoutY="48.0" prefHeight="49.0" prefWidth="251.0" text="Nome da tarefa">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <ComboBox layoutX="27.0" layoutY="330.0" prefWidth="150.0" promptText="Status" />
+            <ComboBox layoutX="34.0" layoutY="329.0" prefWidth="150.0" promptText="Status" />
          </children>
       </AnchorPane>
    </children>

@@ -1,4 +1,7 @@
+package connection;
+
 public class TarefasBanco {
+	
     private int id;
     private String titulo;
     private String descricao;

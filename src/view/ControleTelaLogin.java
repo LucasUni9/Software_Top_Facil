@@ -1,20 +1,20 @@
 package view;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-import javafx.application.Application;
+import connection.AuthDAO;
+import connection.ControleConexao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import model.Usuario;
 
-public class ControleTelaLogin extends Application {
-
+public class ControleTelaLogin {
+	
 	@FXML
 	public Button btnLogin;
 	
@@ -24,30 +24,52 @@ public class ControleTelaLogin extends Application {
 	@FXML
 	public PasswordField txtSenha;
 	
+	@FXML
+	public Button btnCadastrese;
 	
-	public void pressionarBtnLogin (ActionEvent event) throws IOException { 
+	@FXML
+	public Button btnCadastrar;
+	
+	@FXML
+	public TextField txtNomeCadastro;
+	
+	@FXML
+	public TextField txtEmailCadastro;
+	@FXML
+	public PasswordField txtSenhaCadastro;
+	
+	ControleCena controleCena = new ControleCena();
+	
+	public String urlLogin = "/javaFXML/TelaLoginFinal.fxml";
+	public String urlTelaCadastro = "/javaFXML/TelaCadastroFinal.fxml";
+	
+	public void btnLogin (ActionEvent event) throws IOException { 
 		String email = txtEmail.getText();
 		String senha = txtSenha.getText();
 		
-		trocarPagina(event);
+		if (AuthDAO.login(email, senha)) {
+	        controleCena.trocarPagina(event, controleCena.getUrl());
+	    } else {
+	        Alert alert = new Alert(Alert.AlertType.ERROR);
+	        alert.setTitle("Erro");
+	        alert.setHeaderText("Ocorreu um erro");
+	        alert.setContentText("Login inválido");
+	        alert.showAndWait();
+	    }
 	}
 	
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/javaFXML/Login.fxml"));
-        primaryStage.setTitle("Simulador de Kanban");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+	public void btnCadastrese (ActionEvent event) throws IOException {
+		controleCena.trocarPagina(event, urlTelaCadastro);
 	}
 	
-    public void trocarPagina(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/javaFXML/TelaPrincipal.fxml"));
-        Parent root = loader.load();
-        
-        // Obtém a janela (Stage) atual e troca a cena
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
+	public void btnCadastrar (ActionEvent event) throws IOException, SQLException {
+		String nome = txtNomeCadastro.getText();
+		String email = txtEmailCadastro.getText();
+		String senha = txtSenhaCadastro.getText();
+		Usuario usuario = new Usuario(nome, email, senha);
+		ControleConexao.adicionarUsuario(usuario);
+		controleCena.trocarPagina(event, controleCena.getUrl());
+	}
+	
 
 }

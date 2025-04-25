@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="471.0" style="-fx-background-radius: 9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControleTelaTarefa">
+   <children>
+      <Label layoutX="29.0" layoutY="47.0" prefHeight="35.0" prefWidth="146.0" text="Nome da tarefa">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNomeTarefaCriacao" layoutX="29.0" layoutY="89.0" prefHeight="35.0" prefWidth="414.0" />
+      <TextArea fx:id="txtDescricaoTarefaCriacao" layoutX="29.0" layoutY="182.0" prefHeight="75.0" prefWidth="414.0" />
+      <Label layoutX="29.0" layoutY="145.0" prefHeight="30.0" prefWidth="179.0" text="Descrição da tarefa">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="264.0" text="Status">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="escolhaStatus" layoutX="29.0" layoutY="294.0" prefHeight="30.0" prefWidth="187.0" />
+      <Button fx:id="btnCancelar" layoutX="260.0" layoutY="355.0" mnemonicParsing="false" onAction="#btnCancelar" prefHeight="39.0" prefWidth="84.0" style="-fx-background-radius: 15;" text="Cancelar">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSalvar" layoutX="359.0" layoutY="355.0" mnemonicParsing="false" onAction="#btnSalvar" prefHeight="39.0" prefWidth="84.0" style="-fx-background-radius: 15;" text="Salvar">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

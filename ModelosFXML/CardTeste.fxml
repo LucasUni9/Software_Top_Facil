@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171"
+      xmlns:fx="http://javafx.com/fxml/1"
+      alignment="TOP_LEFT"
+      spacing="10"
+      style="-fx-background-color: #DDDDDD; -fx-background-radius: 10; -fx-padding: 10;"
+      prefWidth="300"
+      prefHeight="150">
+
+    <!-- Campo de título -->
+    <TextField text="Design do site"
+               editable="false"
+               style="-fx-background-radius: 5; -fx-padding: 5;" />
+
+    <!-- Campo de descrição -->
+    <TextArea text="Fazer o design do site"
+              wrapText="true"
+              prefRowCount="2"
+              style="-fx-background-radius: 5; -fx-padding: 5;" />
+
+    <!-- Ícone de menu no canto inferior direito -->
+    <HBox alignment="BOTTOM_RIGHT">
+        <VBox spacing="3" alignment="CENTER_RIGHT">
+            <Rectangle width="20" height="3" arcWidth="2" arcHeight="2" fill="black" />
+            <Rectangle width="20" height="3" arcWidth="2" arcHeight="2" fill="black" />
+            <Rectangle width="20" height="3" arcWidth="2" arcHeight="2" fill="black" />
+        </VBox>
+    </HBox>
+
+</VBox>

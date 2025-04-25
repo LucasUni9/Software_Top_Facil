@@ -11,7 +11,7 @@ import model.Tarefa;
 import model.Usuario;
 
 public class ControleConexao {
-	
+
 	//Criar Banco
 	public static void criarBanco() throws SQLException, IOException {
 		String sql = """
@@ -136,7 +136,6 @@ public class ControleConexao {
 	    PreparedStatement pstmt = conexao.prepareStatement(sql);
 	    pstmt.setString(1, usuario.nome);
 	    pstmt.setString(2, usuario.email);
-	    pstmt.setString(3, usuario.senha);
 	    
 	    pstmt.executeUpdate(selecionarDatabase);
 	    pstmt.executeUpdate();
@@ -145,7 +144,7 @@ public class ControleConexao {
 		
 		pegarIdUsuario(usuario);
 		conexao.close();
-	}
+	} 
 	
 	Atualizando o status de uma tarefa
 	UPDATE tarefas SET status = 'concluída' WHERE id = 1;

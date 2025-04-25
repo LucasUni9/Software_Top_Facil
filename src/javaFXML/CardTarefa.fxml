@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="187.0" prefWidth="379.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControleTelaTarefa">
+   <children>
+      <Label fx:id="lblTitulo" alignment="TOP_LEFT" prefHeight="44.0" prefWidth="345.0" style="-fx-background-color: white; -fx-background-radius: 9;" text="Label">
+         <VBox.margin>
+            <Insets bottom="11.0" left="12.0" right="12.0" top="13.0" />
+         </VBox.margin>
+         <font>
+            <Font size="15.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="1.0" left="2.0" right="2.0" top="1.0" />
+         </padding>
+      </Label>
+      <Label fx:id="lblDescricao" alignment="TOP_LEFT" prefHeight="80.0" prefWidth="345.0" style="-fx-background-color: white; -fx-background-radius: 9;" text="Label">
+         <VBox.margin>
+            <Insets left="12.0" right="12.0" />
+         </VBox.margin>
+         <font>
+            <Font size="15.0" />
+         </font>
+         <padding>
+            <Insets bottom="1.0" left="2.0" right="2.0" top="1.0" />
+         </padding>
+      </Label>
+      <Button fx:id="btnEditarCard" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#btnEditarCard" prefHeight="22.0" prefWidth="48.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Button">
+         <VBox.margin>
+            <Insets left="320.0" top="3.0" />
+         </VBox.margin>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Users/lucas/Downloads/icons8-menu-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</VBox>

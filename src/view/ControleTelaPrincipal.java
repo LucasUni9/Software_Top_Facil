@@ -1,15 +1,52 @@
 package view;
 
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+import java.io.IOException;
 
-public class ControleTelaPrincipal extends Application {  
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+
+public class ControleTelaPrincipal { 
     
-	@Override
+	public String urlTelaPrincipal = "/javaFXML/TelaPrincipalFinal.fxml";
+	
+	@FXML
+	public Button btnAdicionar;
+	
+	@FXML
+	public VBox colunaAFazer;
+	
+	@FXML
+	public VBox colunaExecutando;
+	
+	@FXML
+	public VBox colunaConcluidos;
+	
+	ControleCena controleCena = new ControleCena();
+	ControleTelaTarefa controleTelaTarefa = new ControleTelaTarefa();
+	
+	public void btnAdicionar(ActionEvent event) throws IOException {
+		controleCena.trocarPagina(event, controleTelaTarefa.getUrl());
+	}
+	
+	public void adicionarCard(String titulo, String descricao) throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javaFXML/CardTarefa.fxml"));
+            Parent cardNode = loader.load();
+
+            ControleTelaTarefa controle = loader.getController();
+            controle.setDados(titulo, descricao);
+
+            colunaAFazer.getChildren().add(cardNode);
+    }
+	
+/*	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-/*		Label nomeTarefa = new Label("Nome da tarefa");
+		Label nomeTarefa = new Label("Nome da tarefa");
 		Label tituloTarefa = new Label("Descricao da tarefa");
 		VBox boxTarefa = new VBox(nomeTarefa,tituloTarefa);
 		boxTarefa.setAlignment(Pos.CENTER);
@@ -85,7 +122,6 @@ public class ControleTelaPrincipal extends Application {
 		primaryStage.setTitle("Simulador de Kanban");
 		primaryStage.show(); 	*/
 		
-	}
 	
 	
 	//criar card
@@ -94,6 +130,5 @@ public class ControleTelaPrincipal extends Application {
 	
 	//atualizar cards
 	
-
-
 }
+
