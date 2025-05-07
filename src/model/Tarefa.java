@@ -2,14 +2,15 @@ package model;
 
 public class Tarefa {
 	
+	public int idTarefa;
 	private String nome;
 	private String descricao;
-	private StatusTarefa status;
+	private String status;
 	
 	public Tarefa() {
 	}
 	
-	public Tarefa(String nome, String descricao, StatusTarefa status) {
+	public Tarefa(String nome, String descricao, String status) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.setStatus(status);
@@ -35,12 +36,21 @@ public class Tarefa {
 		System.out.println("Nome: " + nome + " | Descrição: " + descricao + " | Status: " + status);
 	}
 
-	public StatusTarefa getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusTarefa status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	public String getIdTarefa() {
+		return nome;
+	}
+
+	public void setIdTarefa(String nome) {
+		this.nome = nome;
+	}
+
 
 }

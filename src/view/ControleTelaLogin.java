@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import connection.AuthDAO;
 import connection.ControleConexao;
+import connection.Sessao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -39,15 +40,20 @@ public class ControleTelaLogin {
 	public PasswordField txtSenhaCadastro;
 	
 	ControleCena controleCena = new ControleCena();
+	ControleConexao controleConexao = new ControleConexao();
+	
 	
 	public String urlLogin = "/javaFXML/TelaLoginFinal.fxml";
 	public String urlTelaCadastro = "/javaFXML/TelaCadastroFinal.fxml";
 	
-	public void btnLogin (ActionEvent event) throws IOException { 
+	public void btnLogin (ActionEvent event) throws IOException, SQLException { 
 		String email = txtEmail.getText();
 		String senha = txtSenha.getText();
 		
 		if (AuthDAO.login(email, senha)) {
+			int idUsuario = ControleConexao.pegarIdUsuario(email, senha);
+			Sessao.setIdUsuario(idUsuario);
+			
 	        controleCena.trocarPagina(event, controleCena.getUrl());
 	    } else {
 	        Alert alert = new Alert(Alert.AlertType.ERROR);

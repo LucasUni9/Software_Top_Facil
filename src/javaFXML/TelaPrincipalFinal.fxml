@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,61 +17,77 @@
    <children>
       <HBox layoutX="-1.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
-            <VBox fx:id="colunaAFazer" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: #02082A; -fx-background-radius: 9; -fx-padding: 0;">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: trasnparent; -fx-padding: 0;" vbarPolicy="NEVER">
+               <content>
+                  <VBox fx:id="colunaAFazer" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: #02082A; -fx-padding: 0;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="TOP" minHeight="45.0" minWidth="386.0" prefHeight="45.0" prefWidth="386.0" style="-fx-background-color: #32FA27; -fx-background-radius: 9;" text="A FAZER" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="9.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </content>
                <HBox.margin>
                   <Insets bottom="13.0" left="15.0" right="15.0" top="13.0" />
                </HBox.margin>
-               <children>
-                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="45.0" prefWidth="386.0" style="-fx-background-color: #32FA27; -fx-background-radius: 9;" text="A FAZER" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="10.0" top="9.0" />
-                     </VBox.margin>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox fx:id="colunaExecutando" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: #02082A; -fx-background-radius: 9;">
+            </ScrollPane>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: trasnparent; -fx-padding: 0;" vbarPolicy="NEVER">
+               <content>
+                  <VBox fx:id="colunaExecutando" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: #02082A;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="TOP" minHeight="45.0" minWidth="386.0" prefHeight="45.0" prefWidth="386.0" style="-fx-background-color: FACA0C; -fx-background-radius: 9;" text="EXECUTANDO" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="9.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </content>
                <HBox.margin>
                   <Insets bottom="13.0" top="13.0" />
                </HBox.margin>
-               <children>
-                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="45.0" prefWidth="386.0" style="-fx-background-color: FACA0C; -fx-background-radius: 9;" text="EXECUTANDO" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="10.0" top="9.0" />
-                     </VBox.margin>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox fx:id="colunaConcluidos" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: #02082A; -fx-background-radius: 9;">
+            </ScrollPane>
+            <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: transparent; -fx-padding: 0;" vbarPolicy="NEVER">
                <HBox.margin>
                   <Insets bottom="13.0" left="15.0" right="15.0" top="13.0" />
                </HBox.margin>
-               <children>
-                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="45.0" prefWidth="386.0" style="-fx-background-color: #2B47FF; -fx-background-radius: 9;" text="CONCLUIDOS" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="10.0" top="9.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Pane prefHeight="645.0" prefWidth="407.0">
+               <content>
+                  <VBox fx:id="colunaConcluidos" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: #02082A;">
                      <children>
-                        <ImageView cache="true" fitHeight="51.0" fitWidth="53.0" layoutX="341.0" layoutY="579.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../Users/lucas/Downloads/icons8-plus-150.png" />
-                           </image>
-                        </ImageView>
-                        <Button fx:id="btnAdicionar" contentDisplay="GRAPHIC_ONLY" layoutX="341.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnAdicionar" prefHeight="45.0" prefWidth="51.0" style="-fx-background-color: transoarent; -fx-border-color: tranparent; -fx-padding: 0; -fx-background-radius: 9;" text="Button" />
+                        <Label alignment="CENTER" contentDisplay="TOP" minHeight="45.0" minWidth="386.0" prefHeight="45.0" prefWidth="386.0" style="-fx-background-color: #2B47FF; -fx-background-radius: 9;" text="CONCLUIDOS" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="9.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Pane prefHeight="603.0" prefWidth="408.0" style="-fx-background-radius: 9; -fx-background-color: #02082A; -fx-border-radius: 9;">
+                           <children>
+                              <ImageView cache="true" fitHeight="51.0" fitWidth="53.0" layoutX="341.0" layoutY="567.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../Users/lucas/Downloads/icons8-plus-150.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="btnAdicionar" contentDisplay="GRAPHIC_ONLY" layoutX="341.0" layoutY="570.0" minHeight="45.0" minWidth="51.0" mnemonicParsing="false" onAction="#btnAdicionar" prefHeight="45.0" prefWidth="51.0" style="-fx-background-color: transoarent; -fx-border-color: tranparent; -fx-padding: 0; -fx-background-radius: 9;" text="Button">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
                      </children>
-                  </Pane>
-               </children>
-            </VBox>
+                  </VBox>
+               </content>
+            </ScrollPane>
          </children>
       </HBox>
    </children>

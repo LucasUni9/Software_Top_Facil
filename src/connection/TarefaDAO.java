@@ -1,16 +1,18 @@
 package connection;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TarefaDAO {
-    private Connection conexao;
+ //   private Connection conexao;
 
-    public TarefaDAO(Connection conexao) {
-        this.conexao = conexao;
-    }
+ //   public TarefaDAO(Connection conexao) {
+ //       this.conexao = conexao;
+ //   }
 
-    public List<TarefasBanco> buscarTarefasPorUsuario(int usuarioId) {
+    public List<TarefasBanco> buscarTarefasPorUsuario(int usuarioId) throws SQLException, IOException {
+    	Connection conexao = Conexao.conectarBanco();
         List<TarefasBanco> listaTarefas = new ArrayList<>();
         String selecionarDatabase = "USE topfacil";
         String sql = "SELECT * FROM tarefas WHERE usuario_id = ?";

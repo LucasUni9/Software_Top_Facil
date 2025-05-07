@@ -10,7 +10,7 @@ public class ControleTarefa {
 	
 	private List<Tarefa> tarefas = new ArrayList<>();
 	
-	public void adicionarTarefa(String nome, String descricao, StatusTarefa status) {
+	public void adicionarTarefa(String nome, String descricao, String status) {
 		tarefas.add(new Tarefa(nome, descricao, status));
 	}
 	

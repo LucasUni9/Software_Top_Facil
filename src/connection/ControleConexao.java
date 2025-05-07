@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import model.Tarefa;
 import model.Usuario;
 
 public class ControleConexao {
@@ -53,8 +52,7 @@ public class ControleConexao {
 				id INT AUTO_INCREMENT PRIMARY KEY,
 				nome VARCHAR(100) NOT NULL,
 				descricao TEXT,
-				status ENUM('pendente', 'em andamento', 'concluida') DEFAULT 
-				'pendente',
+				status VARCHAR(20),
 				usuario_id INT,
 				FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 				);
@@ -85,7 +83,7 @@ public class ControleConexao {
 		
 		System.out.println("Usuario adicionado com sucesso!");
 		
-		pegarIdUsuario(usuario);
+		pegarIdUsuario(usuario.nome, usuario.email);
 		conexao.close();
 	}
 
@@ -104,28 +102,63 @@ public class ControleConexao {
 	    pstmt.executeUpdate(selecionarDatabase);
 	    pstmt.executeUpdate();
 	    
+	    
 		System.out.println("Tarefa adicionada com sucesso!");
 		
 		conexao.close();
 	}
+	 
+	 public static int pegarIdTarefa(String nome, String descricao) throws SQLException, IOException {
+		    String selecionarDatabase = "USE topfacil";
+		    String sql = "SELECT id FROM tarefas WHERE nome = ? AND descricao = ? ";
+		    
+		    Connection conexao = Conexao.conectarBanco();
+
+		    // Seleciona o banco de dados
+		    Statement stmt = conexao.createStatement();
+		    stmt.execute(selecionarDatabase);
+
+		    // Prepara a consulta para buscar o ID
+		    PreparedStatement pstmt = conexao.prepareStatement(sql);
+		    pstmt.setString(1, nome);
+		    pstmt.setString(2, descricao);
+		    
+		    ResultSet rs = pstmt.executeQuery();
+		    
+		    int id = -1; // Valor padr„o para caso nenhum usu·rio seja encontrado
+		    if (rs.next()) {
+		        id = rs.getInt("id");
+		    }
+
+		    conexao.close();
+		    return id;
+		}
 	
-	// pega o id do usuario no banco
-	public static void pegarIdUsuario(Usuario usuario) throws SQLException, IOException {
-		String selecionarDatabase = "USE topfacil";
-		String sql = "SELECT id FROM usuarios WHERE nome = ? AND email = ? AND senha = ?";
-	    
-		Connection conexao = Conexao.conectarBanco();
-	    PreparedStatement pstmt = conexao.prepareStatement(sql);
-	    pstmt.setString(1, usuario.nome);
-	    pstmt.setString(2, usuario.email);
-	    pstmt.setString(3, usuario.senha);
-	    
-	    pstmt.executeUpdate(selecionarDatabase);
-	    ResultSet rs = pstmt.executeQuery();
-	    rs.next();
-	    usuario.id = rs.getInt("id"); // Retorna o ID do usu√°rio encontrado
-	    conexao.close();
-	}
+	 public static int pegarIdUsuario(String email, String senha) throws SQLException, IOException {
+		    String selecionarDatabase = "USE topfacil";
+		    String sql = "SELECT id FROM usuarios WHERE email = ? AND senha = ?";
+		    
+		    Connection conexao = Conexao.conectarBanco();
+
+		    // Seleciona o banco de dados
+		    Statement stmt = conexao.createStatement();
+		    stmt.execute(selecionarDatabase);
+
+		    // Prepara a consulta para buscar o ID
+		    PreparedStatement pstmt = conexao.prepareStatement(sql);
+		    pstmt.setString(1, email);
+		    pstmt.setString(2, senha);
+		    
+		    ResultSet rs = pstmt.executeQuery();
+		    
+		    int id = -1; // Valor padr„o para caso nenhum usu·rio seja encontrado
+		    if (rs.next()) {
+		        id = rs.getInt("id");
+		    }
+
+		    conexao.close();
+		    return id;
+		}
 	
 	/* Atualizando um usu·rio
 	public static void aualizandoUsuario(Usuario usuario) throws SQLException, IOException {
@@ -170,7 +203,7 @@ public class ControleConexao {
 	//Deletando um usu·rio
 	public static void deletarUsuario(Usuario usuario) throws SQLException, IOException {
 		String selecionarDatabase = "USE topfacil";
-		String sql = "DELETE FROM usuarios WHERE id = ? VALUES (?)";
+		String sql = "DELETE FROM usuarios WHERE id = ?";
 
 		Connection conexao = Conexao.conectarBanco();
 	    PreparedStatement pstmt = conexao.prepareStatement(sql);
@@ -184,13 +217,14 @@ public class ControleConexao {
 	}
 
 	//Deletando uma tarefa
-	public static void deletarTarefa(Tarefa tarefa) throws SQLException, IOException {
+	public static void deletarTarefa(int id) throws SQLException, IOException {
 		String selecionarDatabase = "USE topfacil";
-		String sql = "DELETE FROM tarefas WHERE nome = ? VALUES (?)";
+		String sql = "DELETE FROM tarefas WHERE id = ?";
 
+		System.out.println("Deletando tarefa" + id);
 		Connection conexao = Conexao.conectarBanco();
 	    PreparedStatement pstmt = conexao.prepareStatement(sql);
-	    pstmt.setString(1, tarefa.getNome());
+	    pstmt.setLong(1, id);
 	    
 	    pstmt.executeUpdate(selecionarDatabase);
 	    pstmt.executeUpdate();

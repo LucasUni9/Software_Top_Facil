@@ -41,9 +41,9 @@ public class Programa {
             System.out.println("Email ou senha incorretos.");
         }
 		ControleConexao.adicionarUsuario(usuario);
-		ControleConexao.pegarIdUsuario(usuario);
+		ControleConexao.pegarIdUsuario(usuario.email, usuario.senha);
 		usuario.consultarUsuario();
-		TarefaDAO tarefaDAO = new TarefaDAO(conexao);
+		TarefaDAO tarefaDAO = new TarefaDAO();
 
 		while(continuar.equalsIgnoreCase("s")) { 
 			
