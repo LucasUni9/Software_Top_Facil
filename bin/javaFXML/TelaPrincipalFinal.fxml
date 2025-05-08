@@ -17,7 +17,7 @@
    <children>
       <HBox layoutX="-1.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: trasnparent; -fx-padding: 0;" vbarPolicy="NEVER">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: transparent; -fx-padding: 0;" vbarPolicy="NEVER">
                <content>
                   <VBox fx:id="colunaAFazer" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: #02082A; -fx-padding: 0;">
                      <children>
@@ -36,7 +36,7 @@
                   <Insets bottom="13.0" left="15.0" right="15.0" top="13.0" />
                </HBox.margin>
             </ScrollPane>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: trasnparent; -fx-padding: 0;" vbarPolicy="NEVER">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: transparent; -fx-padding: 0;" vbarPolicy="NEVER">
                <content>
                   <VBox fx:id="colunaExecutando" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: #02082A;">
                      <children>
@@ -70,25 +70,25 @@
                               <Insets left="10.0" top="9.0" />
                            </VBox.margin>
                         </Label>
-                        <Pane prefHeight="603.0" prefWidth="408.0" style="-fx-background-radius: 9; -fx-background-color: #02082A; -fx-border-radius: 9;">
-                           <children>
-                              <ImageView cache="true" fitHeight="51.0" fitWidth="53.0" layoutX="341.0" layoutY="567.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../Users/lucas/Downloads/icons8-plus-150.png" />
-                                 </image>
-                              </ImageView>
-                              <Button fx:id="btnAdicionar" contentDisplay="GRAPHIC_ONLY" layoutX="341.0" layoutY="570.0" minHeight="45.0" minWidth="51.0" mnemonicParsing="false" onAction="#btnAdicionar" prefHeight="45.0" prefWidth="51.0" style="-fx-background-color: transoarent; -fx-border-color: tranparent; -fx-padding: 0; -fx-background-radius: 9;" text="Button">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                           </children>
-                        </Pane>
                      </children>
                   </VBox>
                </content>
             </ScrollPane>
          </children>
       </HBox>
+      <Pane layoutX="1204.0" layoutY="648.0" prefHeight="72.0" prefWidth="76.0" style="-fx-background-color: transparent;">
+         <children>
+            <ImageView cache="true" fitHeight="51.0" fitWidth="53.0" layoutX="6.0" layoutY="2.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Users/lucas/Downloads/icons8-plus-150%20(2).png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnAdicionar" contentDisplay="GRAPHIC_ONLY" layoutX="6.0" layoutY="5.0" minHeight="45.0" minWidth="51.0" mnemonicParsing="false" onAction="#btnAdicionar" prefHeight="45.0" prefWidth="51.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0; -fx-background-radius: 9;" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

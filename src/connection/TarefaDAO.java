@@ -5,11 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TarefaDAO {
- //   private Connection conexao;
-
- //   public TarefaDAO(Connection conexao) {
- //       this.conexao = conexao;
- //   }
 
     public List<TarefasBanco> buscarTarefasPorUsuario(int usuarioId) throws SQLException, IOException {
     	Connection conexao = Conexao.conectarBanco();

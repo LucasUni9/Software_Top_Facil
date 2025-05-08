@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -34,55 +33,20 @@ public class ControleTelaTarefa implements Initializable {
 	@FXML
 	public ComboBox<String> escolhaStatus;
 	
-//	@FXML
-//	public Label lblTitulo;
-	
-//	@FXML
-//	public Button btnEditarCard;
-	
-//	@FXML
-//	public Label lblDescricao;
-	
-	private ControleTelaPrincipal controleTelaPrincipal; // Referência para o controlador da tela principal
+	private ControleTelaPrincipal controleTelaPrincipal;
 	
 	ControleCena controleCena = new ControleCena();	
 	
 	public String urlCriacao = "/javaFXML/TelaCriacao.fxml";
-//	public String urlCard = "/javaFXML/CardTarefa.fxml";
 	
 	public String getUrl() {
 		return urlCriacao;
 	}
 	
-//	public String getUrlCard() {
-//		return urlCard;
-//	}
-	
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         escolhaStatus.getItems().addAll("A Fazer", "Executando", "Concluido");
     }
-	
- //   public void setDados(String titulo, String descricao) {
- //       lblTitulo.setText(titulo);
- //       lblDescricao.setText(descricao);
-  //  }
-    
- /*   public void btnSalvar(ActionEvent event) throws IOException {
-    	String titulo = txtNomeTarefaCriacao.getText();
-    	String descricao = txtDescricaoTarefaCriacao.getText();
-    	String status = escolhaStatus.getPromptText();
-    	
-    	//adicionarCard(titulo, descricao, status);
-    }
-    
-    public void btnCancelar(ActionEvent event) throws IOException {
-    	controleCena.trocarPagina(event, controleCena.urlTelaPrincipal);
-    } */
-    
- //   public void btnEditarCard(ActionEvent event) {
- //   }
-    
     
     public void setControleTelaPrincipal(ControleTelaPrincipal controle) {
         this.controleTelaPrincipal = controle;
@@ -96,7 +60,6 @@ public class ControleTelaTarefa implements Initializable {
         
         // Passar os dados para a tela principal
         if (controleTelaPrincipal != null) {
-           // controleTelaPrincipal.atualizarTelaPrincipal(titulo, descricao, status);
         	controleTelaPrincipal.atualizarTelaPrincipal(titulo, descricao, status);
         }
         

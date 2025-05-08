@@ -14,7 +14,6 @@ public class Conexao {
 		final String usuario = prop.getProperty("usuarioBanco");
 		final String senha = prop.getProperty("senhaBanco");
 		
-		//System.out.println("Conexão feita com sucesso!");
 		return DriverManager.getConnection(url, usuario, senha);
 	}
 	

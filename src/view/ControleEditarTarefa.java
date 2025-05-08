@@ -8,9 +8,7 @@ import java.util.ResourceBundle;
 import connection.ControleConexao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -59,7 +57,6 @@ public class ControleEditarTarefa implements Initializable{
     	tarefa = new Tarefa(nome, descricao, status);
         // Passar os dados para a tela principal
         if (controleCard != null) {
-           // controleTelaPrincipal.atualizarTelaPrincipal(titulo, descricao, status);
         	controleCard.setDados(tarefa);
         }
 
@@ -70,8 +67,8 @@ public class ControleEditarTarefa implements Initializable{
     
     private ControleTelaPrincipal controlePrincipal;
 
-    public void setControlePrincipal(ControleTelaPrincipal controle) {
-        this.controlePrincipal = controle;
+    public void setControlePrincipal(ControleTelaPrincipal controlePrincipal) {
+        this.controlePrincipal = controlePrincipal;
     }
     
     @FXML
@@ -80,14 +77,9 @@ public class ControleEditarTarefa implements Initializable{
         int idTarefa = ControleConexao.pegarIdTarefa(tarefa.getNome(), tarefa.getDescricao());
         ControleConexao.deletarTarefa(idTarefa);
 
-        // Carrega o FXML e força a atualização dos cards
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/javaFXML/TelaPrincipalFinal.fxml"));
-        Parent root = loader.load();
-
-        ControleTelaPrincipal controle = loader.getController();
-        controle.carregarCards();
-        System.out.println("Recarregando cards");
-        // Fecha a janela atual
+        controlePrincipal.carregarCards();
+        //System.out.println("Recarregando cards");
+        
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
         stage.close();
     }

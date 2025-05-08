@@ -15,9 +15,9 @@ public class ControleTarefa {
 	}
 	
 	public void listarTarefas( ) {
-		System.out.println("Lista De Tarefas: ");
+		//System.out.println("Lista De Tarefas: ");
 		if (tarefas.isEmpty()) {
-			System.out.println("Nenhuma tarefa cadastrada");
+		//	System.out.println("Nenhuma tarefa cadastrada");
 		} else {
 			for(Tarefa tarefa : tarefas) {
 				tarefa.consultarTarefa();

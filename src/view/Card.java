@@ -28,13 +28,17 @@ public class Card {
 	    private Tarefa tarefa;
 	    
 	    ControleCena controleCena = new ControleCena();
+	    
+	    private ControleTelaPrincipal controlePrincipal;
+
+	    public void setControlePrincipal(ControleTelaPrincipal controlePrincipal) {
+	        this.controlePrincipal = controlePrincipal;
+	    }
 
 	    @FXML
 	    void btnEditarCard(ActionEvent event) {
 	 
 	    }
-	    
-	     // A tarefa associada a este card
 
 	    public void setDados(Tarefa tarefa) {
 	        this.tarefa = tarefa;
@@ -45,26 +49,26 @@ public class Card {
 				try {
 					abrirTelaEdicao();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			});
 	    }
 
 	    private void abrirTelaEdicao() throws IOException {
-	        // Exemplo: abrir uma nova tela/modal para editar
-	       // EditarTarefaDialog.mostrar(tarefa, this); // Passa a tarefa e o próprio controller
-	    	//System.out.println("Botão editar apertado" + tarefa.getNome());
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/javaFXML/TelaEditarTarefa.fxml"));
 	        Parent root = loader.load();
+	        
+	        // Pega o controller da nova tela
+	        ControleEditarTarefa controllerEditar = loader.getController();
+
+	        // Passa a instância da tela principal
+	        controllerEditar.setControlePrincipal(controlePrincipal);
+	        
 
 	        // Obter o controlador da tela de criação
 	       ControleEditarTarefa controle = loader.getController();
 	       controle.setControleCard(this);
 	       controle.setCardEditar(tarefa);
-
-	        // Passar o controlador da tela principal para o controlador da tela de criação
-	//        controle.setControleCard(this); // "this" se refere ao controlador da tela principal
 
 	        // Exibir a tela de criação (abre em uma nova janela, por exemplo)
 	        Stage stage = new Stage();
