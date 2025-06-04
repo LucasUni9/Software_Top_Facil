@@ -6,7 +6,7 @@ import java.util.List;
 
 public class TarefaDAO {
 
-    public List<TarefasBanco> buscarTarefasPorUsuario(int usuarioId) throws SQLException, IOException {
+    public List<TarefasBanco> buscarTarefasPorUsuario(int usuarioId) throws Exception {
     	Connection conexao = Conexao.conectarBanco();
         List<TarefasBanco> listaTarefas = new ArrayList<>();
         String selecionarDatabase = "USE topfacil";

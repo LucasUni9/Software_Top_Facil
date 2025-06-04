@@ -55,6 +55,9 @@ public class ControleTelaPrincipal implements Initializable {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 	}
 	
@@ -111,7 +114,7 @@ public class ControleTelaPrincipal implements Initializable {
         stage.show();
     }
     
-    public void carregarCards() throws SQLException { 
+    public void carregarCards() throws Exception { 
     	try { 
 	    	tarefasDoUsuario.clear();
 	    	if (colunaAFazer.getChildren().size() > 1) {
@@ -128,7 +131,7 @@ public class ControleTelaPrincipal implements Initializable {
 	        	//System.out.println("Carregando tarefa: " + tarefa.getTitulo());
 	        	adicionarCard(tarefa.getTitulo(), tarefa.getDescricao(), tarefa.getStatus());
         	} 
-        } catch (IOException e) {
+        } catch (Exception e) {
 	        Alert alert = new Alert(Alert.AlertType.ERROR);
 	    	alert.setTitle("Erro");
 	    	alert.setHeaderText("Ocorreu um erro");

@@ -40,6 +40,12 @@ public class ControleEditarTarefa implements Initializable{
     
     public Tarefa tarefa;
     
+    private ControleTelaPrincipal controlePrincipal;
+
+    public void setControlePrincipal(ControleTelaPrincipal controlePrincipal) {
+        this.controlePrincipal = controlePrincipal;
+    }
+    
 
     @FXML
     public void btnCancelar(ActionEvent event) {
@@ -49,30 +55,30 @@ public class ControleEditarTarefa implements Initializable{
     }
 
     @FXML
-    public void btnSalvar(ActionEvent event) throws IOException {
+    public void btnSalvar(ActionEvent event) throws Exception {
     	String nome = txtNomeTarefa.getText();
     	String descricao = txtDescricaoTarefa.getText();
     	String status = escolhaStatus.getValue();
+    	
+    	int idTarefa = ControleConexao.pegarIdTarefa(nome, descricao);
     	
     	tarefa = new Tarefa(nome, descricao, status);
         // Passar os dados para a tela principal
         if (controleCard != null) {
         	controleCard.setDados(tarefa);
         }
-
+        
+        ControleConexao.atualizarTarefa(idTarefa, nome, descricao, status);
+        
+        controlePrincipal.carregarCards();
         // Fechar a janela de criação (caso você queira fechar após salvar)
         Stage stage = (Stage) btnSalvar.getScene().getWindow();
         stage.close();
     }
     
-    private ControleTelaPrincipal controlePrincipal;
 
-    public void setControlePrincipal(ControleTelaPrincipal controlePrincipal) {
-        this.controlePrincipal = controlePrincipal;
-    }
-    
     @FXML
-    public void btnExcluir(ActionEvent event) throws SQLException, IOException {
+    public void btnExcluir(ActionEvent event) throws Exception {
         
         int idTarefa = ControleConexao.pegarIdTarefa(tarefa.getNome(), tarefa.getDescricao());
         ControleConexao.deletarTarefa(idTarefa);

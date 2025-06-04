@@ -13,7 +13,7 @@ import model.Usuario;
 public class ControleConexao {
 
 	//Criar Banco
-	public static void criarBanco() throws IOException {
+	public static void criarBanco() throws Exception {
 		try {	
 			String sql = """
 						CREATE DATABASE IF NOT EXISTS topFacil
@@ -25,17 +25,13 @@ public class ControleConexao {
 			//	System.out.println("Banco de dados criado com sucesso!");
 				
 				conexao.close();
-		} catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-	        alert.setTitle("Erro");
-	        alert.setHeaderText("Ocorreu um erro");
-	        alert.setContentText("Erro ao criar o banco de dados");
-	        alert.showAndWait();
+		} catch (Exception e) {
+			throw new Exception("Erro ao conectar com o banco: " + e.getMessage());
 		}
 	}
 	
 	//Criar tabela usuario
-	public static void criarTabelaUsuario() throws IOException {
+	public static void criarTabelaUsuario() throws Exception {
 		try {
 			String selecionarDatabase = "USE topfacil";
 			String sql = """
@@ -62,7 +58,7 @@ public class ControleConexao {
 	}
 
 	//Criar Tabela tarefa
-	public static void criarTabelaTarefa() throws IOException {
+	public static void criarTabelaTarefa() throws Exception {
 		try {
 			String selecionarDatabase = "USE topfacil";
 			String sql = """
@@ -93,7 +89,7 @@ public class ControleConexao {
 	}
 
 	//adicionar usuario
-	public static void adicionarUsuario(Usuario usuario) throws SQLException, IOException {
+	public static void adicionarUsuario(Usuario usuario) throws Exception {
 		try {
 			String selecionarDatabase = "USE topfacil";
 			String sql = "INSERT IGNORE INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
@@ -121,7 +117,7 @@ public class ControleConexao {
 	}
 
 	//adicionar tarefa
-	 public static void adicionarTarefa(String nome, String descricao, String status, int idUsuario) throws IOException {
+	 public static void adicionarTarefa(String nome, String descricao, String status, int idUsuario) throws Exception {
 		try {
 			String selecionarDatabase = "USE topfacil";
 			String sql = "INSERT INTO tarefas (nome, descricao, status, usuario_id) VALUES (?,?,?,?)";
@@ -149,7 +145,7 @@ public class ControleConexao {
 		}
 	}
 	 
-	 public static int pegarIdTarefa(String nome, String descricao) throws SQLException, IOException {
+	 public static int pegarIdTarefa(String nome, String descricao) throws Exception {
 		   
 		 	String selecionarDatabase = "USE topfacil";
 		    String sql = "SELECT id FROM tarefas WHERE nome = ? AND descricao = ? ";
@@ -176,7 +172,7 @@ public class ControleConexao {
 		    return id;
 		}
 	
-	 public static int pegarIdUsuario(String email, String senha) throws SQLException, IOException {
+	 public static int pegarIdUsuario(String email, String senha) throws Exception {
 		    String selecionarDatabase = "USE topfacil";
 		    String sql = "SELECT id FROM usuarios WHERE email = ? AND senha = ?";
 		    
@@ -202,7 +198,7 @@ public class ControleConexao {
 		    return id;
 		}
 	
-	/* Atualizando um usuário
+	/*Atualizando um usuário
 	public static void aualizandoUsuario(Usuario usuario) throws SQLException, IOException {
 		String selecionarDatabase = "USE topfacil";
 		String sql = "UPDATE usuarios SET nome = : ? WHERE id = ?; VALUES (?, ?)";
@@ -219,7 +215,7 @@ public class ControleConexao {
 		
 		pegarIdUsuario(usuario);
 		conexao.close();
-	} 
+	}  
 	
 	Atualizando o status de uma tarefa
 	UPDATE tarefas SET status = 'concluída' WHERE id = 1;
@@ -243,7 +239,7 @@ public class ControleConexao {
 	} */
 	
 	//Deletando um usuário
-	public static void deletarUsuario(Usuario usuario) throws IOException {
+	public static void deletarUsuario(Usuario usuario) throws Exception {
 		try {
 			String selecionarDatabase = "USE topfacil";
 			String sql = "DELETE FROM usuarios WHERE id = ?";
@@ -267,7 +263,7 @@ public class ControleConexao {
 	}
 
 	//Deletando uma tarefa
-	public static void deletarTarefa(int id) throws IOException {
+	public static void deletarTarefa(int id) throws Exception {
 		try {
 			String selecionarDatabase = "USE topfacil";
 			String sql = "DELETE FROM tarefas WHERE id = ?";
@@ -290,6 +286,38 @@ public class ControleConexao {
 	        alert.showAndWait();
 		}
 	}
+	
+	 int id = 1; // ID da tarefa que você quer atualizar
+     String novoNome = "Nova tarefa";
+     String novaDescricao = "Descrição atualizada";
+     String novoStatus = "concluída";
+     
+     public static void atualizarTarefa(int id, String nome, String descricao, String status) throws Exception {
+	     try {
+	    	 String selecionarDatabase = "USE topfacil";
+	         String sql = "UPDATE tarefas SET nome = ?, descricao = ?, status = ? WHERE id = ?";
+	         
+	         Connection conexao = Conexao.conectarBanco();
+			 PreparedStatement pstmt = conexao.prepareStatement(sql);
+	         pstmt.setString(1, nome);
+	         pstmt.setString(2, descricao);
+	         pstmt.setString(3, status);
+	         pstmt.setInt(4, id);
+	
+	         pstmt.executeUpdate(selecionarDatabase);
+			 pstmt.executeUpdate();
+	
+	         pstmt.close();
+	         conexao.close();
+	     
+	     } catch (SQLException e) {
+	    	 Alert alert = new Alert(Alert.AlertType.ERROR);
+		        alert.setTitle("Erro");
+		        alert.setHeaderText("Ocorreu um erro");
+		        alert.setContentText("Erro ao atualizar a tarefa");
+		        alert.showAndWait();
+	     }
+ }
 	/*
 	Alterando a tabela para adicionar um novo campo
 	ALTER TABLE usuarios ADD COLUMN telefone VARCHAR(20);

@@ -45,7 +45,7 @@ public class ControleTelaTarefa implements Initializable {
 	
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        escolhaStatus.getItems().addAll("A Fazer", "Executando", "Concluido");
+        escolhaStatus.getItems().addAll("A Fazer", "Executando", "Concluído");
     }
     
     public void setControleTelaPrincipal(ControleTelaPrincipal controle) {
@@ -53,7 +53,7 @@ public class ControleTelaTarefa implements Initializable {
     }
     
     @FXML
-    public void btnSalvar(ActionEvent event) throws IOException, SQLException {
+    public void btnSalvar(ActionEvent event) throws Exception {
         String titulo = txtNomeTarefaCriacao.getText();
         String descricao = txtDescricaoTarefaCriacao.getText();
         String status = escolhaStatus.getValue();

@@ -81,7 +81,7 @@
                   <Insets bottom="13.0" left="15.0" right="15.0" top="13.0" />
                </HBox.margin>
                <children>
-                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="45.0" prefWidth="386.0" style="-fx-background-color: #2B47FF; -fx-background-radius: 9;" text="CONCLUIDOS" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="45.0" prefWidth="386.0" style="-fx-background-color: #2B47FF; -fx-background-radius: 9;" text="CONCLUÍDOS" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>

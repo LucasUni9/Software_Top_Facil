@@ -62,7 +62,7 @@
                <content>
                   <VBox fx:id="colunaConcluidos" prefHeight="694.0" prefWidth="408.0" style="-fx-background-color: #02082A;">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="TOP" minHeight="45.0" minWidth="386.0" prefHeight="45.0" prefWidth="386.0" style="-fx-background-color: #2B47FF; -fx-background-radius: 9;" text="CONCLUIDOS" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="TOP" minHeight="45.0" minWidth="386.0" prefHeight="45.0" prefWidth="386.0" style="-fx-background-color: #2B47FF; -fx-background-radius: 9;" text="CONCLUÍDOS" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>

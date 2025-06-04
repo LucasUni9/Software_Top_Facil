@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class AuthDAO {
 
-    public static boolean login(String email, String senha) throws IOException {
+    public static boolean login(String email, String senha) throws Exception {
     	String selecionarDatabase = "USE topfacil";
         String sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
 

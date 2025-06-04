@@ -46,7 +46,7 @@ public class ControleTelaLogin {
 	public String urlLogin = "/javaFXML/TelaLoginFinal.fxml";
 	public String urlTelaCadastro = "/javaFXML/TelaCadastroFinal.fxml";
 	
-	public void btnLogin (ActionEvent event) throws IOException, SQLException { 
+	public void btnLogin (ActionEvent event) throws Exception { 
 		String email = txtEmail.getText();
 		String senha = txtSenha.getText();
 		
@@ -68,7 +68,7 @@ public class ControleTelaLogin {
 		controleCena.trocarPagina(event, urlTelaCadastro);
 	}
 	
-	public void btnCadastrar (ActionEvent event) throws IOException, SQLException {
+	public void btnCadastrar (ActionEvent event) throws Exception {
 		String nome = txtNomeCadastro.getText();
 		String email = txtEmailCadastro.getText();
 		String senha = txtSenhaCadastro.getText();
